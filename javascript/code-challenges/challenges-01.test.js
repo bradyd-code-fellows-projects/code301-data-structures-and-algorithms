@@ -10,7 +10,7 @@ Use `forEach` to loop over the input array and work with each value.  Push the n
 
 const addOne = (arr) => {
   const newArr = [];
-  arr.forEach(element => {newArr.push(element + 1);});
+  arr.forEach(element => { newArr.push(element + 1); });
   return newArr;
 };
 
@@ -24,7 +24,7 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 
 const addExclamation = (arr) => {
   const newArr = [];
-  arr.forEach(string => {newArr.push(`${string}!`);});
+  arr.forEach(string => { newArr.push(`${string}!`); });
   return newArr;
 };
 
@@ -38,7 +38,7 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 
 const allUpperCase = (arr) => {
   const newArr = [];
-  arr.forEach(string => {newArr.push(string.toUpperCase());});
+  arr.forEach(string => { newArr.push(string.toUpperCase()); });
   return newArr;
 };
 
@@ -58,8 +58,8 @@ const greeting = (word) => {
 };
 
 const speaker = (words, greeting) => {
-  const newArr =[];
-  words.forEach(word => {newArr.push(greeting(word));});
+  const newArr = [];
+  words.forEach(word => { newArr.push(greeting(word)); });
   return newArr;
 };
 
@@ -84,10 +84,10 @@ const addValues = (arr, value) => {
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  times.forEach(() => {callback(arr, num);});
-  // for (let i = 0; i < times; i++) {
-  //   callback(arr, num);  --> suggestion from Guy Farley, I was trying to get the forEach to work still
-  // }
+  // arr.forEach(() => {callback(arr, num);});
+  for (let i = 0; i < times; i++) { // --> suggestion from Guy Farley, I was trying to get the forEach to work still
+    callback(arr, num);
+  }
   return arr;
 };
 
@@ -110,7 +110,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  availableItems.forEach()
+  let newArr = [];
+  availableItems.forEach(item => {
+    if (availableItems.available === true) {
+      newArr.push(item.name);
+    }
+    return newArr;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
