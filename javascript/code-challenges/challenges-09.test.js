@@ -1,5 +1,7 @@
 'use strict';
 
+const { children } = require("cheerio/lib/api/traversing");
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -149,43 +151,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  let values = Object.values(arr);
-  let charsArr = [];
-  values.forEach(char => {
-    charsArr.push([char.name, char.children]);
-    return charsArr;
+  let kids = 0;
+  arr.forEach(person => {
+    if (person.name === character) {
+      Object.keys(person).forEach((key, idx) => {
+        if (key === 'children') {
+          kids = Object.values(person)[idx].length;
+        }
+      });
+    }
   });
-  let charsObj = {};
-  charsArr.forEach( char => {
-    charsObj.character = char[0];
-    charsObj.children = char[1];
-    return charsObj;
-  });
-  if (charsObj.children === undefined) {
-    charsObj.hasChildren = false;
-  } else {
-    charsObj.hasChildren = true;
-    console.log(charsObj);
-  }
+  return kids ? true : false;
 };
-
-// const updateNumbers = (obj) => {
-//   let entriesArr = Object.entries(obj);
-//   let hrArray = [];
-//   entriesArr.forEach(entry => {
-//     hrArray.push(entry[0] + ': ' + entry[1]);
-//   });
-//   return hrArray;
-// };
-
-// const checkValues = (obj, value) => {
-//   let values = Object.entries(obj);
-//   if (values[0].includes(value)) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
