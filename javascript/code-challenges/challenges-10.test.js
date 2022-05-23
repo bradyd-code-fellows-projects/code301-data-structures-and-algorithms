@@ -30,8 +30,8 @@ return: 23
 const findMax = (matrix) => {
   let max = 0;
   let allNums = [];
-  matrix.forEach( arr => {
-    arr.forEach( val => {
+  matrix.forEach(arr => {
+    arr.forEach(val => {
       allNums.push(val);
     });
   });
@@ -56,7 +56,17 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let sum = 0;
+  let allNums = [];
+  matrix.forEach(arr => {
+    arr.forEach(val => {
+      allNums.push(val);
+    });
+  });
+  allNums.forEach(i => {
+    sum += i;
+  });
+  return sum;
 };
 
 
@@ -83,8 +93,15 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  let grandTotalSales = [];
+  let hourlySalesPerLocation = [];
+  for (let i = 0; i < stores.length; i++) {
+    hourlySalesPerLocation.push(stores[i]);
+    for (let j = 0; j < hourlySalesPerLocation.length; j++) {
+      console.log('hourlySalesPerLocation[j]: ', hourlySalesPerLocation[j]);
+    }
+  }
+  return grandTotalSales;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,9 +114,13 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
-const salesData = (hours, data) => {
-  // Solution code here...
-};
+// const salesData = (hours, data) => {
+//   let hourlySalesPerLocation = [];
+//   for (let i = 0; i < hours.length; i++) {
+//     hourlySalesPerLocation.push({sales: `88 cookies`, time: `${hours[i]}`});
+//     console.log(hourlySalesPerLocation);
+//   }
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
