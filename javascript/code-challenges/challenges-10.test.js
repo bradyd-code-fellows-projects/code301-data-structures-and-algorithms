@@ -30,8 +30,8 @@ return: 23
 const findMax = (matrix) => {
   let max = 0;
   let allNums = [];
-  matrix.forEach( arr => {
-    arr.forEach( val => {
+  matrix.forEach(arr => {
+    arr.forEach(val => {
       allNums.push(val);
     });
   });
@@ -56,7 +56,17 @@ For example:
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let sum = 0;
+  let allNums = [];
+  matrix.forEach(arr => {
+    arr.forEach(val => {
+      allNums.push(val);
+    });
+  });
+  allNums.forEach(i => {
+    sum += i;
+  });
+  return sum;
 };
 
 
@@ -83,8 +93,15 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  let grandTotalSales = [];
+  for (let i in stores[0]) {
+    let hourlySales = 0;
+    for (let j in stores) {
+      hourlySales += stores[j][i];
+    }
+    grandTotalSales.push(hourlySales);
+  }
+  return grandTotalSales;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,8 +115,21 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let hourlySalesPerLocation = [];
+  for (let i in hours[0]) {
+    hourlySalesPerLocation.push({sales: `${data[i]} cookies`, time: `${hours[i]}`});
+  }
+  console.log(hourlySalesPerLocation);
+  return hourlySalesPerLocation;
 };
+
+// for (let i in stores[0]) {
+//   let hourlySales = 0;
+//   for (let j in stores) {
+//     hourlySales += stores[j][i];
+//   }
+//   grandTotalSales.push(hourlySales);
+// }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
