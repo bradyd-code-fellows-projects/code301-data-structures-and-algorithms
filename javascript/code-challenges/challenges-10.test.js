@@ -94,12 +94,12 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   let grandTotalSales = [];
-  let hourlySalesPerLocation = [];
-  for (let i = 0; i < stores.length; i++) {
-    hourlySalesPerLocation.push(stores[i]);
-    for (let j = 0; j < hourlySalesPerLocation.length; j++) {
-      console.log('hourlySalesPerLocation[j]: ', hourlySalesPerLocation[j]);
+  for (let i in stores[0]) {
+    let hourlySales = 0;
+    for (let j in stores) {
+      hourlySales += stores[j][i];
     }
+    grandTotalSales.push(hourlySales);
   }
   return grandTotalSales;
 };
@@ -114,13 +114,22 @@ Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
 ------------------------------------------------------------------------------------------------ */
 
-// const salesData = (hours, data) => {
-//   let hourlySalesPerLocation = [];
-//   for (let i = 0; i < hours.length; i++) {
-//     hourlySalesPerLocation.push({sales: `88 cookies`, time: `${hours[i]}`});
-//     console.log(hourlySalesPerLocation);
+const salesData = (hours, data) => {
+  let hourlySalesPerLocation = [];
+  for (let i in hours[0]) {
+    hourlySalesPerLocation.push({sales: `${data[i]} cookies`, time: `${hours[i]}`});
+  }
+  console.log(hourlySalesPerLocation);
+  return hourlySalesPerLocation;
+};
+
+// for (let i in stores[0]) {
+//   let hourlySales = 0;
+//   for (let j in stores) {
+//     hourlySales += stores[j][i];
 //   }
-// };
+//   grandTotalSales.push(hourlySales);
+// }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
