@@ -116,20 +116,11 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   let hourlySalesPerLocation = [];
-  for (let i in hours[0]) {
-    hourlySalesPerLocation.push({sales: `${data[i]} cookies`, time: `${hours[i]}`});
+  for (let i in hours) {
+    hourlySalesPerLocation.push({ sales: `${data[i]} cookies`, time: `${hours[i]}` });
   }
-  console.log(hourlySalesPerLocation);
   return hourlySalesPerLocation;
 };
-
-// for (let i in stores[0]) {
-//   let hourlySales = 0;
-//   for (let j in stores) {
-//     hourlySales += stores[j][i];
-//   }
-//   grandTotalSales.push(hourlySales);
-// }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -153,7 +144,7 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
