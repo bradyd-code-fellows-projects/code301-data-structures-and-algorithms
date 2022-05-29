@@ -19,7 +19,13 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj) {
-  // console.log([`${<li>name: ${obj.name}</li>}`, `<li>age: ${obj.age}</li>`]);
+  let keys = Object.keys(obj);
+  let vals = Object.values(obj);
+  let result = [];
+  for (let i in keys) {
+    result.push(`<li>${keys[i]}: ${vals[i]}</li>`);
+  }
+  return result;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,14 +163,8 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  let shortestHeight = data[2].height;
-  let shortestCharacter = data[2].name;
-  data.map( character => {
-    if (character.height < shortestHeight) {
-      shortestCharacter = character.name;
-    }
-  });
-  console.log(shortestHeight, shortestCharacter);
+  data.forEach(() => data.sort((a, b) => a.height - b.height));
+  return data[0].name;
 };
 
 /* ------------------------------------------------------------------------------------------------
