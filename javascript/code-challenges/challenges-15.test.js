@@ -29,7 +29,10 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(str => {
+    let firstChar = str.charAt(0).toUpperCase();
+    return firstChar + str.substring(1);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,7 +107,13 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let heavier = [];
+  arr.forEach(character => {
+    if (character.mass > 77) {
+      heavier.push(character.name);
+    }
+  });
+  return heavier.join(' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -122,7 +131,15 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => {
+    if (a[property] < b[property]) {
+      return -1;
+    } else if (a.property < b.property) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -138,7 +155,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  return /^(https:\/\/)/gm.test(url) ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -161,8 +178,55 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  let helpCheck = (set) => {
+    return set.every(cell => cell !== '' && cell === set[0])
+      ? true
+      : false;
+  };
+  if (helpCheck(board[0])) return true;
+  if (helpCheck(board[1])) return true;
+  if (helpCheck(board[2])) return true;
+  if (helpCheck([board[0][0], board[1][0], board[2][0]])) return true;
+  if (helpCheck([board[0][1], board[1][1], board[2][1]])) return true;
+  if (helpCheck([board[0][2], board[1][2], board[2][2]])) return true;
+  if (helpCheck([board[0][0], board[1][1], board[2][2]])) return true;
+  if (helpCheck([board[0][2], board[1][1], board[2][0]])) return true;
+
+  return false;
 };
+
+// my attempt
+// const detectTicTacToeWin = (board) => {
+//   let cells = [
+//     board[0][0],
+//     board[0][1],
+//     board[0][2],
+//     board[1][0],
+//     board[1][1],
+//     board[1][2],
+//     board[2][0],
+//     board[2][1],
+//     board[2][2]];
+//   let trios = [
+//     [cells[0], cells[1], cells[2]],
+//     [cells[3], cells[4], cells[5]],
+//     [cells[6], cells[7], cells[8]],
+//     [cells[0], cells[4], cells[8]],
+//     [cells[2], cells[4], cells[6]],
+//     [cells[0], cells[3], cells[6]],
+//     [cells[1], cells[4], cells[7]],
+//     [cells[2], cells[5], cells[8]]
+//   ];
+//   let isItAWin = trios.forEach(trio => trio.forEach(() => {
+//     if (trio[0] === trio[1] && trio[0] === trio[2]) {
+//       console.log(trio[0], trio[1], trio[2]);
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }));
+//   return isItAWin;
+// };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
